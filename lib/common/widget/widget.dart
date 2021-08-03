@@ -14,7 +14,7 @@ Widget topAppBar() {
   );
 }
 
-Widget mapIcon(VoidCallback onPressed, IconData icons,String heroTag) {
+Widget mapIcon(VoidCallback onPressed, IconData icons, String heroTag) {
   return FloatingActionButton(
     onPressed: onPressed,
     materialTapTargetSize: MaterialTapTargetSize.padded,
@@ -53,6 +53,42 @@ Widget searchAddressField(
         ),
       ),
       onChanged: onChanged,
+    ),
+  );
+}
+
+Widget searchLocationField({
+  TextEditingController controller,
+  GestureTapCallback onTap,
+  ValueChanged<String> onChanged,
+  IconData icon,
+  String hint,
+  bool autoFocus = false,
+  bool readOnly = false,
+}) {
+  return Container(
+    margin: EdgeInsets.only(top: 40, left: 10, right: 10),
+    height: 50,
+    width: double.infinity,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(30),
+      border: Border.all(color: Colors.grey),
+    ),
+    child: TextField(
+      controller: controller,
+      autofocus: autoFocus,
+      readOnly: readOnly,
+      onTap: onTap,
+      onChanged: onChanged,
+      style: TextStyle(color: Colors.black, fontSize: 16),
+      decoration: InputDecoration(
+        prefixIcon: Icon(icon ?? Icons.pin_drop, color: Colors.black54),
+        suffixIcon: Icon(Icons.keyboard_voice, color: Colors.black54),
+        border: InputBorder.none,
+        hintText: hint ?? 'Search here',
+        hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
+      ),
     ),
   );
 }

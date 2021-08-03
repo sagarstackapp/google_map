@@ -2,7 +2,7 @@
     package="com.example.google_map">
    <application
         android:label="Google Map"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@drawable/app_icon">
        <meta-data
            android:name="com.google.android.geo.API_KEY"
            android:value="AIzaSyAYF8jW8dhujXmWMUonN7-pcg94goP-G8M" />

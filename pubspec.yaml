@@ -31,7 +31,7 @@ dependencies:
   google_maps_flutter: ^2.0.5
   geocoder: ^0.2.1
   fluttertoast: ^8.0.7
-  map_polyline_draw: ^1.0.4
+  http: ^0.13.3
 
 
 dev_dependencies:

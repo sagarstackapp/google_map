@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_map/common/constant/colors.dart';
 
-Widget topAppBar() {
+Widget topAppBar(context) {
   return PreferredSize(
     preferredSize: Size(double.infinity, 60),
     child: AppBar(
-      backgroundColor: ColorResources.Red,
-      title: Text('Google Map'),
+      backgroundColor: Colors.transparent,
+      title: Text(
+        'Google Map',
+        style: TextStyle(letterSpacing: 1.5, color: ColorResources.LightBlue),
+      ),
       centerTitle: true,
-      elevation: 10,
-      shadowColor: Color(0xFFFFE35452),
+      iconTheme: IconThemeData(color: ColorResources.LightBlue),
+      elevation: 0,
     ),
   );
 }
@@ -20,10 +23,7 @@ Widget mapIcon(VoidCallback onPressed, IconData icons, String heroTag) {
     materialTapTargetSize: MaterialTapTargetSize.padded,
     backgroundColor: ColorResources.Red,
     heroTag: heroTag,
-    child: Icon(
-      icons,
-      size: 36.0,
-    ),
+    child: Icon(icons, size: 36.0),
   );
 }
 
@@ -67,15 +67,17 @@ Widget searchLocationField({
   bool readOnly = false,
 }) {
   return Container(
-    margin: EdgeInsets.only(top: 40, left: 10, right: 10),
+    margin: EdgeInsets.only(top: 30, left: 10, right: 10),
     height: 50,
     width: double.infinity,
+    alignment: Alignment.center,
     decoration: BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.circular(30),
-      border: Border.all(color: Colors.grey),
+      borderRadius: BorderRadius.circular(10),
+      border: Border.all(color: ColorResources.LightBlue),
     ),
     child: TextField(
+      textAlign: TextAlign.start,
       controller: controller,
       autofocus: autoFocus,
       readOnly: readOnly,
@@ -83,11 +85,44 @@ Widget searchLocationField({
       onChanged: onChanged,
       style: TextStyle(color: Colors.black, fontSize: 16),
       decoration: InputDecoration(
-        prefixIcon: Icon(icon ?? Icons.pin_drop, color: Colors.black54),
-        suffixIcon: Icon(Icons.keyboard_voice, color: Colors.black54),
+        prefixIcon: Padding(
+          padding: EdgeInsets.all(10),
+          child: Image.asset('assets/images/location.png'),
+        ),
         border: InputBorder.none,
         hintText: hint ?? 'Search here',
-        hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
+        hintStyle: TextStyle(
+          color: ColorResources.LightBlue,
+          fontSize: 16,
+          fontFamily: 'JetBrains',
+        ),
+      ),
+    ),
+  );
+}
+
+Widget commonElevatedButton({VoidCallback onPressed, String text}) {
+  return Container(
+    height: 40,
+    width: 180,
+    child: ElevatedButton(
+      onPressed: onPressed,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.directions),
+          SizedBox(width: 8),
+          Text(text, style: TextStyle(color: ColorResources.White)),
+        ],
+      ),
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ),
+        backgroundColor: MaterialStateProperty.all(
+          ColorResources.LightBlue.withOpacity(0.8),
+        ),
       ),
     ),
   );

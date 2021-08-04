@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:google_map/common/constant/string.dart';
 import 'package:google_map/service/suggestion_service.dart';
 import 'package:http/http.dart';
@@ -6,9 +7,13 @@ import 'package:http/http.dart';
 class PlaceApiProvider {
   final client = Client();
 
+  String apiKey = Platform.isIOS
+      ? StringResources.IosAPIKey
+      : StringResources.AndroidAPIKey;
+
   Future<List<Suggestion>> fetchSuggestions(String input) async {
     final request =
-        'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$input&types=address&components=country:ch&key=${StringResources.AndroidAPIKey}';
+        'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$input&types=address&components=country:ch&key=$apiKey';
     print('url --> $request');
     final response = await client.get(Uri.parse(request));
 

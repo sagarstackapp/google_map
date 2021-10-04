@@ -113,8 +113,8 @@ class RouteDrawScreenState extends State<RouteDrawScreen> {
       ImageResources.BlackMarker,
     );
     sourceIcon = await BitmapDescriptor.fromAssetImage(
-      ImageConfiguration(devicePixelRatio: 5),
-      ImageResources.RedMarker,
+      ImageConfiguration(devicePixelRatio: 2.5),
+      ImageResources.BlueDot1,
     );
   }
 

@@ -5,7 +5,7 @@
         android:icon="@drawable/app_icon">
        <meta-data
            android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyAYF8jW8dhujXmWMUonN7-pcg94goP-G8M" />
+           android:value="AIzaSyD6OscOK9m6Jbgj0gJB-NBFEwRgyn5C5r4" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
